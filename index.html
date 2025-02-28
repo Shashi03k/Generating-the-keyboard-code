@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <title>Keypress Event</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .box {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+        .key-box {
+            margin-top: 20px;
+            padding: 20px 40px;
+            font-size: 40px;
+            color: #2e7d32;
+            font-weight: bold;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.1s ease-in-out;
+        }
+        .pressed {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">You pressed <span id="key">...</span></div>
+    <div class="key-box" id="keyCode">0</div>
+
+    <script>
+        document.addEventListener("keydown", function(event) {
+            document.getElementById("key").textContent = event.key;
+            document.getElementById("keyCode").textContent = event.keyCode;
+            let keyBox = document.getElementById("keyCode");
+            keyBox.classList.add("pressed");
+            setTimeout(() => keyBox.classList.remove("pressed"), 100);
+        });
+    </script>
+</body>
+</html>
